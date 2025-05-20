@@ -114,73 +114,30 @@ return {
       indent = { enabled = false },
       picker = {
         files = {
-          hidden = true, -- Incluir archivos ocultos
-          ignored = true, -- Respetar .gitignore
           exclude = {
-            function(filepath)
-              -- Common directories to exclude
-              local ignore_dirs = {
-                "node_modules/",
-                ".git/",
-                ".cache/",
-                "vendor/",
-                "build/",
-                "dist/",
-                ".next/",
-                ".yarn/",
-                "target/",
-                ".idea/",
-                ".vscode/",
-                ".DS_Store/",
-                "coverage/",
-                "tmp/",
-                "temp/",
-                "logs/",
-                ".history/",
-                ".svn/",
-                "__pycache__/",
-                "venv/",
-                "out/",
-                "bin/",
-                "obj/",
-              }
-
-              -- Common file patterns to exclude
-              local ignore_patterns = {
-                "%.min%.",
-                "%.map%.",
-                "%.lock$",
-                "%.log$",
-                "%.swp$",
-                "%.bak$",
-                "%.tmp$",
-                "%.o$",
-                "%.pyc$",
-                "%.class$",
-                "%.jar$",
-                "%.zip$",
-              }
-
-              -- Check directory patterns
-              for _, pattern in ipairs(ignore_dirs) do
-                if filepath:find(pattern, 1, true) then
-                  return true -- Exclude this file
-                end
-              end
-
-              -- Check file patterns (using Lua pattern matching)
-              for _, pattern in ipairs(ignore_patterns) do
-                if filepath:match(pattern) then
-                  return true -- Exclude this file
-                end
-              end
-
-              return false
-            end,
+            "node_modules",
+            "package-lock.json",
+            "nuxt",
+            "next",
+            "build",
+            "dist",
+            ".git",
+            ".cache",
+          },
+        },
+        grep = {
+          exclude = {
+            "node_modules",
+            "package-lock.json",
+            ".git",
+            ".cache",
+            "build",
+            "dist",
+            "nuxt",
+            "next",
           },
         },
       },
-
       notifier = {
         enabled = true,
         timeout = 5000,

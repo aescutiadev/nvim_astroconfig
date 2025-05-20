@@ -83,6 +83,16 @@ return {
           desc = "Toogle Neotree",
         },
 
+        ["<Leader>ff"] = {
+          "<cmd>lua Snacks.picker.files({exclude = {'.git', 'node_modules', '.cache', 'package-lock.json','vendor', '__pycache__', '.DS_Store'}})<CR>",
+          desc = "Find files",
+        },
+
+        ["<Leader>fw"] = {
+          "<cmd>lua Snacks.picker.grep({exclude = {'.git', 'node_modules', '.cache', 'package-lock.json', 'vendor', '__pycache__', '.DS_Store'}})<CR>",
+          desc = "Find files",
+        },
+
         ["<Leader>ba"] = {
           function()
             require("neo-tree.command").execute {
