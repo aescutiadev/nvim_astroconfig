@@ -19,6 +19,7 @@ return {
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.motion.flash-nvim" },
+  { import = "astrocommunity.recipes.vscode-icons" },
   { import = "astrocommunity.search.grug-far-nvim" },
   { import = "astrocommunity.indent.mini-indentscope" },
   { import = "astrocommunity.completion.blink-cmp" },
