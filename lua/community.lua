@@ -28,4 +28,5 @@ return {
   { import = "astrocommunity.completion.copilot-lua-cmp" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
   { import = "astrocommunity.editing-support.multicursors-nvim" },
+  { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
 }
