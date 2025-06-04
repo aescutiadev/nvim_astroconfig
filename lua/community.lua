@@ -25,7 +25,7 @@ return {
   { import = "astrocommunity.completion.blink-cmp" },
   { import = "astrocommunity.completion.blink-cmp-git" },
   { import = "astrocommunity.completion.blink-cmp-emoji" },
-  { import = "astrocommunity.completion.copilot-lua-cmp" },
+  { import = "astrocommunity.completion.copilot-vim-cmp" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
   { import = "astrocommunity.editing-support.multicursors-nvim" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },

@@ -23,7 +23,7 @@ return {
     "CopilotChatCommit",
   },
   dependencies = {
-    { "zbirenbaum/copilot.lua" },
+    { "github/copilot.vim" },
     { "nvim-lua/plenary.nvim" },
     {
       "AstroNvim/astrocore",

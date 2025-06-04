@@ -85,6 +85,11 @@ return {
           desc = "Toogle Neotree",
         },
 
+        [","] = {
+          "<cmd>lua Snacks.picker.files({exclude = {'.git', 'node_modules', 'dist', 'build', '.cache', 'package-lock.json','vendor', '__pycache__', '.DS_Store'}})<CR>",
+          desc = "Find files",
+        },
+
         ["<Leader>ff"] = {
           "<cmd>lua Snacks.picker.files({exclude = {'.git', 'node_modules', 'dist', 'build', '.cache', 'package-lock.json','vendor', '__pycache__', '.DS_Store'}})<CR>",
           desc = "Find files",
