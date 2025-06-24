@@ -12,6 +12,7 @@ return {
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.pack.astro" },
+  { import = "astrocommunity.pack.svelte" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.angular" },
   { import = "astrocommunity.pack.laravel" },
