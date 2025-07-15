@@ -106,5 +106,7 @@ return {
     },
     { "AstroNvim/astroui", opts = { icons = { CopilotChat = "" } } },
   },
-  opts = {},
+  opts = {
+    model = "claude-sonnet-4",
+  },
 }

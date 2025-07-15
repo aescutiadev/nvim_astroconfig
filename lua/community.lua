@@ -20,6 +20,7 @@ return {
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.motion.flash-nvim" },
+  { import = "astrocommunity.motion.marks-nvim" },
   { import = "astrocommunity.recipes.vscode-icons" },
   { import = "astrocommunity.search.grug-far-nvim" },
   { import = "astrocommunity.indent.mini-indentscope" },
@@ -28,6 +29,5 @@ return {
   { import = "astrocommunity.completion.blink-cmp-emoji" },
   { import = "astrocommunity.completion.copilot-vim-cmp" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
-  { import = "astrocommunity.editing-support.multicursors-nvim" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
 }

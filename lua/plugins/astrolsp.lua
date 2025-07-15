@@ -6,6 +6,12 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
+  init = function()
+    require("astrocore").notify(
+      "automatic signature help is now build into AstroLSP, enable it with `features.signature_help` in the AstroLSP `opts`",
+      vim.log.levels.WARN
+    )
+  end,
   ---@type AstroLSPOpts
   opts = {
     -- Configuration table of features provided by AstroLSP
@@ -13,6 +19,7 @@ return {
       codelens = true, -- enable/disable codelens refresh on start
       inlay_hints = false, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
+      signature_help = true, -- enable/disable signature help on start
     },
     -- customize lsp formatting options
     formatting = {
