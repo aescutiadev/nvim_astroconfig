@@ -30,4 +30,5 @@ return {
   { import = "astrocommunity.completion.copilot-vim-cmp" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
+  { import = "astrocommunity.editing-support.nvim-treesitter-context" },
 }
