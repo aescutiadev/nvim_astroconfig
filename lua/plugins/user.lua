@@ -37,11 +37,7 @@ return {
           }, "\n"),
         },
       },
-      indent = {
-        enabled = true,
-        char = "-", -- Character used for indentation
-        scope_char = ">", -- Character used for scope indentation
-      }, -- Indent only the current block
+      indent = { enable = false }, -- Indent only the current block
       notifier = {
         enabled = true,
         timeout = 6000,
