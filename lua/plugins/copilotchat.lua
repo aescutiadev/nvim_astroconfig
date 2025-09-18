@@ -1,109 +1,155 @@
----@type LazySpec
+local prefix = "<Leader>a"
 return {
-  "CopilotC-Nvim/CopilotChat.nvim",
-  version = "^4",
+  "yetone/avante.nvim",
+  build = vim.fn.has "win32" == 1 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+    or "make",
+  event = "User AstroFile", -- load on file open because Avante manages it's own bindings
   cmd = {
-    "CopilotChat",
-    "CopilotChatOpen",
-    "CopilotChatClose",
-    "CopilotChatToggle",
-    "CopilotChatStop",
-    "CopilotChatReset",
-    "CopilotChatSave",
-    "CopilotChatLoad",
-    "CopilotChatModels",
-    "CopilotChatExplain",
-    "CopilotChatReview",
-    "CopilotChatFix",
-    "CopilotChatOptimize",
-    "CopilotChatDocs",
-    "CopilotChatTests",
-    "CopilotChatCommit",
+    "AvanteAsk",
+    "AvanteBuild",
+    "AvanteEdit",
+    "AvanteRefresh",
+    "AvanteSwitchProvider",
+    "AvanteShowRepoMap",
+    "AvanteModels",
+    "AvanteChat",
+    "AvanteToggle",
+    "AvanteClear",
+    "AvanteFocus",
+    "AvanteStop",
   },
   dependencies = {
-    { "nvim-lua/plenary.nvim" },
-    {
-      "AstroNvim/astrocore",
-      ---@param opts AstroCoreOpts
-      opts = function(_, opts)
-        local maps = assert(opts.mappings)
-        local prefix = opts.options.g.copilot_chat_prefix or "<Leader>a"
-        local astroui = require "astroui"
-
-        maps.n[prefix] = { desc = astroui.get_icon("CopilotChat", 1, true) .. "CopilotChat" }
-        maps.v[prefix] = { desc = astroui.get_icon("CopilotChat", 1, true) .. "CopilotChat" }
-
-        maps.n[prefix .. "o"] = { ":CopilotChatOpen<CR>", desc = "Open Chat" }
-        maps.n[prefix .. "c"] = { ":CopilotChatClose<CR>", desc = "Close Chat" }
-        maps.n[prefix .. "t"] = { ":CopilotChatToggle<CR>", desc = "Toggle Chat" }
-        maps.n[prefix .. "r"] = { ":CopilotChatReset<CR>", desc = "Reset Chat" }
-        maps.n[prefix .. "s"] = { ":CopilotChatStop<CR>", desc = "Stop Chat" }
-
-        maps.n[prefix .. "S"] = {
-          function()
-            vim.ui.input({ prompt = "Save Chat: " }, function(input)
-              if input ~= nil and input ~= "" then require("CopilotChat").save(input) end
-            end)
-          end,
-          desc = "Save Chat",
-        }
-
-        maps.n[prefix .. "L"] = {
-          function()
-            local copilot_chat = require "CopilotChat"
-            local path = copilot_chat.config.history_path
-            local chats = require("plenary.scandir").scan_dir(path, { depth = 1, hidden = true })
-            -- Remove the path from the chat names and .json
-            for i, chat in ipairs(chats) do
-              chats[i] = chat:sub(#path + 2, -6)
-            end
-            vim.ui.select(chats, { prompt = "Load Chat: " }, function(selected)
-              if selected ~= nil and selected ~= "" then copilot_chat.load(selected) end
-            end)
-          end,
-          desc = "Load Chat",
-        }
-
-        local function select_action(selection_type)
-          return function()
-            require("CopilotChat").select_prompt { selection = require("CopilotChat.select")[selection_type] }
-          end
-        end
-
-        maps.n[prefix .. "p"] = {
-          select_action "buffer",
-          desc = "Prompt actions",
-        }
-
-        maps.v[prefix .. "p"] = {
-          select_action "visual",
-          desc = "Prompt actions",
-        }
-
-        local function quick_chat(selection_type)
-          return function()
-            vim.ui.input({ prompt = "Quick Chat: " }, function(input)
-              if input ~= nil and input ~= "" then
-                require("CopilotChat").ask(input, { selection = require("CopilotChat.select")[selection_type] })
-              end
-            end)
-          end
-        end
-
-        maps.n[prefix .. "q"] = {
-          quick_chat "buffer",
-          desc = "Quick Chat",
-        }
-
-        maps.v[prefix .. "q"] = {
-          quick_chat "visual",
-          desc = "Quick Chat",
-        }
-      end,
-    },
-    { "AstroNvim/astroui", opts = { icons = { CopilotChat = "" } } },
+    { "stevearc/dressing.nvim", optional = true },
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
   },
   opts = {
-    model = "claude-sonnet-4",
+    mappings = {
+      ask = prefix .. "<CR>",
+      edit = prefix .. "e",
+      refresh = prefix .. "r",
+      new_ask = prefix .. "n",
+      focus = prefix .. "f",
+      select_model = prefix .. "?",
+      stop = prefix .. "S",
+      select_history = prefix .. "h",
+      toggle = {
+        default = prefix .. "t",
+        debug = prefix .. "d",
+        hint = prefix .. "H",
+        suggestion = prefix .. "s",
+        repomap = prefix .. "R",
+      },
+      diff = {
+        next = "]c",
+        prev = "[c",
+      },
+      files = {
+        add_current = prefix .. ".",
+        add_all_buffers = prefix .. "B",
+      },
+    },
+  },
+  specs = { -- configure optional plugins
+    { "AstroNvim/astroui", opts = { icons = { Avante = "" } } },
+    {
+      "Kaiser-Yang/blink-cmp-avante",
+      lazy = true,
+      specs = {
+        {
+          "Saghen/blink.cmp",
+          optional = true,
+          opts = {
+            sources = {
+              default = { "avante" },
+              providers = {
+                avante = { module = "blink-cmp-avante", name = "Avante" },
+              },
+            },
+          },
+        },
+      },
+    },
+    { -- if copilot.lua is available, default to copilot provider
+      "zbirenbaum/copilot.lua",
+      optional = true,
+      specs = {
+        {
+          "yetone/avante.nvim",
+          opts = {
+            provider = "copilot",
+            auto_suggestions_provider = "copilot",
+          },
+        },
+      },
+    },
+    {
+      -- make sure `Avante` is added as a filetype
+      "MeanderingProgrammer/render-markdown.nvim",
+      optional = true,
+      opts = function(_, opts)
+        if not opts.file_types then opts.file_types = { "markdown" } end
+        opts.file_types = require("astrocore").list_insert_unique(opts.file_types, { "Avante" })
+      end,
+    },
+    {
+      -- make sure `Avante` is added as a filetype
+      "OXY2DEV/markview.nvim",
+      optional = true,
+      opts = function(_, opts)
+        if not opts.preview then opts.preview = {} end
+        if not opts.preview.filetypes then opts.preview.filetypes = { "markdown", "quarto", "rmd" } end
+        opts.preview.filetypes = require("astrocore").list_insert_unique(opts.preview.filetypes, { "Avante" })
+      end,
+    },
+    {
+      "folke/snacks.nvim",
+      optional = true,
+      specs = {
+        {
+          "yetone/avante.nvim",
+          opts = {
+            selector = {
+              provider = "snacks",
+            },
+          },
+        },
+      },
+    },
+    {
+      "nvim-neo-tree/neo-tree.nvim",
+      optional = true,
+      opts = {
+        filesystem = {
+          commands = {
+            avante_add_files = function(state)
+              local node = state.tree:get_node()
+              local filepath = node:get_id()
+              local relative_path = require("avante.utils").relative_path(filepath)
+
+              local sidebar = require("avante").get()
+
+              local open = sidebar:is_open()
+              -- ensure avante sidebar is open
+              if not open then
+                require("avante.api").ask()
+                sidebar = require("avante").get()
+              end
+
+              sidebar.file_selector:add_selected_file(relative_path)
+
+              -- remove neo tree buffer
+              if not open then sidebar.file_selector:remove_selected_file "neo-tree filesystem [1]" end
+            end,
+          },
+          window = {
+            mappings = {
+              ["oa"] = "avante_add_files",
+            },
+          },
+        },
+      },
+    },
   },
 }
