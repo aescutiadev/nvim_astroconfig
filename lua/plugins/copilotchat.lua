@@ -25,6 +25,11 @@ return {
     { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
   },
   opts = {
+    behaviour = {
+      auto_suggestions = false,
+      auto_apply_diff_after_generation = false,
+      enable_fastapply = false,
+    },
     mappings = {
       ask = prefix .. "<CR>",
       edit = prefix .. "e",
