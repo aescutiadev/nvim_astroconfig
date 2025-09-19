@@ -79,6 +79,11 @@ return {
           "yetone/avante.nvim",
           opts = {
             provider = "copilot",
+            providers = {
+              copilot = {
+                model = "claude-sonnet-4",
+              },
+            },
             auto_suggestions_provider = "copilot",
           },
         },
