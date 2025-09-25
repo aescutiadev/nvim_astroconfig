@@ -1,22 +1,22 @@
 ---@type LazySpec
 local prompts = {
+  BetterNamings = "Please provide better names for the following variables and functions.",
+  Concise = "Please rewrite the following text to make it more concise.",
+  CreateAPost = "Please provide documentation for the following code to post it in social media, like Linkedin, it has be deep, well explained and easy to understand. Also do it in a fun and engaging way.",
+  Documentation = "Please provide documentation for the following code.",
+  DocumentationForGithub = "Please provide documentation for the following code ready for GitHub using markdown.",
   Explain = "Please explain how the following code works.",
-  Review = "Please review the following code and provide suggestions for improvement.",
-  Tests = "Please explain how the selected code works, then generate unit tests for it.",
-  Refactor = "Please refactor the following code to improve its clarity and readability.",
   FixCode = "Please fix the following code to make it work as intended.",
   FixError = "Please explain the error in the following text and provide a solution.",
-  BetterNamings = "Please provide better names for the following variables and functions.",
-  Documentation = "Please provide documentation for the following code.",
   JsDocs = "Please provide JsDocs for the following code in english.",
-  DocumentationForGithub = "Please provide documentation for the following code ready for GitHub using markdown.",
-  CreateAPost = "Please provide documentation for the following code to post it in social media, like Linkedin, it has be deep, well explained and easy to understand. Also do it in a fun and engaging way.",
+  Refactor = "Please refactor the following code to improve its clarity and readability.",
+  Review = "Please review the following code and provide suggestions for improvement.",
+  Spelling = "Please correct any grammar and spelling errors in the following text.",
+  Summarize = "Please summarize the following text.",
   SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
   SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
-  Summarize = "Please summarize the following text.",
-  Spelling = "Please correct any grammar and spelling errors in the following text.",
+  Tests = "Please explain how the selected code works, then generate unit tests for it.",
   Wording = "Please improve the grammar and wording of the following text.",
-  Concise = "Please rewrite the following text to make it more concise.",
 }
 
 return {
@@ -119,12 +119,13 @@ return {
       model = "claude-sonnet-4",
       prompts = prompts,
       system_prompt = [[
-Eres un experto en arquitectura limpia y diseño de software escalable, especializado en 
-Html, CSS, Tailwind, Javascript, React, Vue, Angular, Svelte, PHP, Python, bases de datos SQL y NoSQL,
-y en frameworks como Next.js, Nestjs, Nuxt, Adonis, Laravel, Django, Node.js y TypeScript.
-Tus respuestas deben ser claras, con ejemplos prácticos y aplicables a proyectos reales.
-Aporta recomendaciones sobre arquitectura, modularización, testing y buenas prácticas de desarrollo.
-Habla de manera profesional, directa y pragmática, adaptando explicaciones a desarrolladores intermedios y avanzados.
+You are an expert in clean architecture and scalable software design, specialized in 
+HTML, CSS, Tailwind, Javascript, React, Vue, Angular, Svelte, PHP, Python, SQL and NoSQL databases,
+and frameworks like Next.js, Nestjs, Nuxt, Adonis, Laravel, Django, Node.js and TypeScript.
+Your responses should be clear, with practical examples applicable to real projects.
+Provide recommendations on architecture, modularization, testing and development best practices.
+Speak in a professional, direct and pragmatic manner, adapting explanations to intermediate and advanced developers
+and all commentes in code in english.
       ]],
       headers = {
         user = "👤 You",
