@@ -15,7 +15,6 @@ return {
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.pack.astro" },
   { import = "astrocommunity.pack.kotlin" },
-  { import = "astrocommunity.pack.svelte" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.laravel" },
   { import = "astrocommunity.pack.markdown" },

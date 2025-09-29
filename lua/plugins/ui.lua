@@ -9,20 +9,11 @@ return {
       },
     },
   },
-
   {
     "folke/tokyonight.nvim",
+    lazy = true,
     opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-      on_highlights = function(hl, _)
-        hl.CursorLine = {
-          bg = "#1b1e24",
-        }
-      end,
+      style = "night",
     },
   },
 }

@@ -1,6 +1,5 @@
 ---@type LazySpec
 local prompts = {
-  BetterNamings = "Please provide better names for the following variables and functions.",
   Concise = "Please rewrite the following text to make it more concise.",
   CreateAPost = "Please provide documentation for the following code to post it in social media, like Linkedin, it has be deep, well explained and easy to understand. Also do it in a fun and engaging way.",
   Documentation = "Please provide documentation for the following code.",
@@ -8,6 +7,7 @@ local prompts = {
   Explain = "Please explain how the following code works.",
   FixCode = "Please fix the following code to make it work as intended.",
   FixError = "Please explain the error in the following text and provide a solution.",
+  ImproveNamings = "Please provide better names for the following variables and functions.",
   JsDocs = "Please provide JsDocs for the following code in english.",
   Refactor = "Please refactor the following code to improve its clarity and readability.",
   Review = "Please review the following code and provide suggestions for improvement.",
@@ -125,7 +125,7 @@ and frameworks like Next.js, Nestjs, Nuxt, Adonis, Laravel, Django, Node.js and 
 Your responses should be clear, with practical examples applicable to real projects.
 Provide recommendations on architecture, modularization, testing and development best practices.
 Speak in a professional, direct and pragmatic manner, adapting explanations to intermediate and advanced developers
-and all commentes in code in english.
+and all comments in code in english.
       ]],
       headers = {
         user = "👤 You",

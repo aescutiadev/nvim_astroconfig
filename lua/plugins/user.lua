@@ -37,7 +37,7 @@ return {
           }, "\n"),
         },
       },
-      indent = { enable = false }, -- Indent only the current block
+      indent = { enable = true }, -- Indent only the current block
       notifier = {
         enabled = true,
         timeout = 6000,
