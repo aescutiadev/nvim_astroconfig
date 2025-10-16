@@ -116,7 +116,7 @@ return {
       { "AstroNvim/astroui", opts = { icons = { CopilotChat = "" } } },
     },
     opts = {
-      model = "claude-sonnet-4",
+      model = "claude-sonnet-4.5",
       prompts = prompts,
       system_prompt = [[
 You are an expert in clean architecture and scalable software design, specialized in 
