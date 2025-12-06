@@ -48,11 +48,13 @@ return {
         colorcolumn = "120", -- Visual guide for line length
         cursorline = true, -- Highlight current line
         cursorcolumn = false, -- Don't highlight current column (performance)
+        winborder = "rounded",
 
         -- Scrolling and navigation
         scrolloff = 8, -- Keep 8 lines visible above/below cursor when scrolling
         sidescrolloff = 8, -- Keep 8 columns visible when horizontally scrolling
         smoothscroll = true, -- Smooth scrolling for wrapped lines
+        showmatch = true, -- Resaltar paréntesis/corchetes
 
         -- File handling and persistence
         undofile = true, -- Enable persistent undo history across sessions
@@ -128,6 +130,7 @@ return {
         foldlevel = 99, -- Start with all folds open
         foldlevelstart = 99, -- Start with all folds open
         foldenable = true, -- Enable folding
+        foldnestmax = 1000, -- Maximum fold depth
 
         -- Miscellaneous performance and behavior
         laststatus = 3, -- Global statusline
