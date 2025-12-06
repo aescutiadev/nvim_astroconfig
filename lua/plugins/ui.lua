@@ -5,7 +5,7 @@ return {
       style = {
         transparent = true, -- enable transparent background
         inactive = false, -- enable inactive window transparency
-        border = false, -- enable border transparency
+        border = true, -- enable border transparency
       },
     },
   },
@@ -13,7 +13,18 @@ return {
     "folke/tokyonight.nvim",
     lazy = true,
     opts = {
-      style = "night",
+      transparent = true,
+      border = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+      on_highlights = function(hl, _)
+        hl.CursorLine = {
+          bg = "#1a1b26", -- #1c1c1c #0d1117
+        }
+      end,
+      -- style = "night",
     },
   },
 }
