@@ -11,6 +11,7 @@ return {
   { import = "astrocommunity.pack.mdx" },
   { import = "astrocommunity.pack.sql" },
   { import = "astrocommunity.pack.xml" },
+  { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.pack.astro" },
