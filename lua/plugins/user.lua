@@ -40,7 +40,17 @@ return {
           }, "\n"),
         },
       },
-      indent = { enable = true }, -- Indent only the current block
+      indent = {
+        indent = {
+          enabled = false,
+        },
+        scope = {
+          enabled = true,
+          only_current = true,
+          only_scope = true,
+          char = "│",
+        },
+      },
       notifier = {
         enabled = true,
         timeout = 6000,

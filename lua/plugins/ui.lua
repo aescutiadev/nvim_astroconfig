@@ -21,7 +21,7 @@ return {
       },
       on_highlights = function(hl, _)
         hl.CursorLine = {
-          bg = "#1a1b26", -- #1c1c1c #0d1117
+          bg = "#0d1117", -- #1c1c1c #1a1b26 #0d1117
         }
       end,
       -- style = "night",
