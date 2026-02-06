@@ -31,6 +31,7 @@ return {
   { import = "astrocommunity.completion.blink-cmp-emoji" },
   { import = "astrocommunity.completion.copilot-lua-cmp" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
+  { import = "astrocommunity.editing-support.codecompanion-nvim" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
   { import = "astrocommunity.editing-support.nvim-treesitter-context" },
 }

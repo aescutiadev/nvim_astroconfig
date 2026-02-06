@@ -15,5 +15,7 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
+vim.g.mcphub = { port = 37373, config = "~/.config/mpchub/servers.json", ... }
+
 require "lazy_setup"
 require "polish"
